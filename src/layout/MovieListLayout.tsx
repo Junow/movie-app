@@ -11,7 +11,6 @@ const MoviListLayoutContainer = styled.div`
     align-items: center;
     align-items: center;
     width: 100%;
-    margin: 0 3rem;
 
     > div{
       display: flex;

@@ -11,10 +11,6 @@ const uri = 'https://api.themoviedb.org/3/movie/now_playing?language=ko-KR'
 const NowPlayingContainer = styled.section`
   max-width: 1200px;
   width: 100%;
-  > h2{
-    padding: 0 3rem;
-  }
-  
 
   a{
     text-decoration: none;

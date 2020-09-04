@@ -8,7 +8,9 @@ const MainContainer = styled.div`
   display: flex;
   place-items: center;
   flex-direction: column;
-  margin: 1rem;
+  margin: 0 auto;
+  width: 90%;
+
 `
 
 export default function Main() {

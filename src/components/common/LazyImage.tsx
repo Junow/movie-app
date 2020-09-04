@@ -11,6 +11,9 @@ const Container = styled.div`
     width: 10rem;
     height: 15rem;
     border-radius: .5rem;
+    position: absolute;
+    left: 0;
+    top: 0;
   }
   .lazy {
     background-image: url(${Placeholder});
@@ -39,7 +42,7 @@ export default function LazyImage({src, onClick}: {src: string, onClick?: () => 
 
   return (
     <Container onClick={onClick}>
-      <div className='lazy placeholder' ref={placeholderRef} style={{position: 'absolute', left: 0, top: 0}}/>
+      <div className='lazy placeholder' ref={placeholderRef} style={{}}/>
       <img
         data-src={src}
         ref={intersectionObserverRef}

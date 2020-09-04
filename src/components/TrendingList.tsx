@@ -12,10 +12,6 @@ const uri = 'https://api.themoviedb.org/3/trending/movie/day?language=ko-KR'
 const TrendingContainer = styled.section`
   max-width: 1200px;
   width: 100%;
-  > h2{
-    padding: 0 3rem;
-  }
-
 `
 export default function Trending(){
   const history = useHistory()
