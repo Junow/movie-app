@@ -42,10 +42,12 @@ export default React.memo(function NowPlaying({
           <LazyImage src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} onClick={handleClick}/>
         )
       }
-      <h3 onClick={handleClick} data-testid={'title'}>{movie.title}</h3>
-      <span>
-        {movie.release_date}
-      </span>
+      <div>
+        <h3 onClick={handleClick} data-testid={'title'}>{movie.title}</h3>
+        <span>
+          {movie.release_date}
+        </span>
+      </div>
     </NowPlayingItem>
   )
 })
