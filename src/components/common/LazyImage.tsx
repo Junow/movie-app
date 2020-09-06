@@ -41,7 +41,7 @@ export default function LazyImage({src, onClick}: {src: string, onClick?: () => 
 
   return (
     <Container onClick={onClick}>
-      <div className='lazy-image' ref={placeholderRef} style={{}}/>
+      <div className='lazy-image' ref={placeholderRef}/>
       <img
         data-src={src}
         ref={intersectionObserverRef}
