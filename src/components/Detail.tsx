@@ -3,9 +3,10 @@ import styled from 'styled-components'
 import {fetcher} from '../common/request'
 import {useParams} from 'react-router-dom'
 import * as T from '../types/api'
-import {getYear, convertMinToHour} from '../common/utils'
+import {getYear, convertMinToHour, formattedPrice} from '../common/utils'
 import useSwr from 'swr'
 import LazyImage from './common/LazyImage'
+
 
 const DetailContainer = styled.section<{backdrop: string}>`
   display: flex;
@@ -58,9 +59,23 @@ const DetailContainer = styled.section<{backdrop: string}>`
     background-size: cover;
   }
 
-  .cast-container {
+  .info {
+    display: flex;
     max-width: 1300px;
-    overflow-x: scroll;
+    margin: auto;
+  }
+
+  .sub-info {
+    width: 200px;
+    padding: 1rem;
+
+    strong {
+      display: block;
+    }
+  }
+  .cast-container {
+    width: 100%;
+    overflow-x: auto;
     margin: 0 auto;
   }
   
@@ -123,24 +138,34 @@ export default function Detail(){
           </section>
         </div>
       </div>
-      <section className='cast-container'> 
-        <h1>주요 출연진</h1>
-        <div className='cast-list'> 
-          {
-            data.credits.cast.map(cast => {
-              return (
-                <div className='cast'>
-                  <LazyImage src={`https://image.tmdb.org/t/p/w276_and_h350_face${cast.profile_path}`}/>
-                  <div>
-                    <div className='cast-name'>{cast.name}</div>
-                    <div className='cast-character'>{cast.character}</div>
+      <div className="info">
+        <section className='cast-container'> 
+          <h1>주요 출연진</h1>
+          <div className='cast-list'> 
+            {
+              data.credits.cast.map(cast => {
+                return (
+                  <div className='cast'>
+                    <LazyImage src={`https://image.tmdb.org/t/p/w276_and_h350_face${cast.profile_path}`}/>
+                    <div>
+                      <div className='cast-name'>{cast.name}</div>
+                      <div className='cast-character'>{cast.character}</div>
+                    </div>
                   </div>
-                </div>
-              )
-            })
-          }
-        </div>
-      </section>
+                )
+              })
+            }
+          </div>
+        </section>
+        <section className="sub-info">
+          <p><strong>원제</strong>{data.original_title}</p>
+          <p><strong>상태</strong>{data.status}</p>
+          <p><strong>원어</strong>{data.original_language}</p>
+          <p><strong>제작비</strong>${formattedPrice(data.budget)}</p>
+          <p><strong>수익</strong>${formattedPrice(data.revenue)}</p>
+        </section>
+      </div>
+
     </DetailContainer>
   )
 }

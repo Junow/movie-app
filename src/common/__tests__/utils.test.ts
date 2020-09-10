@@ -1,4 +1,9 @@
-import {getYear, convertMinToHour, convertOutOf10ToPercentage} from '../utils'
+import {
+  getYear,
+  convertMinToHour,
+  convertOutOf10ToPercentage,
+  formattedPrice,
+} from '../utils'
 
 describe('Utils', () => {
   describe('getYear()', () => {
@@ -32,6 +37,15 @@ describe('Utils', () => {
       [4.73, '47%'], 
     ])('should convert out of 10 to percentage', (a,b) => {
       expect(convertOutOf10ToPercentage(a)).toEqual(b)
+    })
+  })
+
+  describe('formattedPrice()', () => {
+    it.each([
+      [1000, '1,000'],
+      [1000000,'1,000,000']
+    ])('should return formatted price', (a,b) => {
+      expect(formattedPrice(a)).toEqual(b)
     })
   })
 })

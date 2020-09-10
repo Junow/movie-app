@@ -16,3 +16,7 @@ export const convertMinToHour = (min: number) => {
 export const convertOutOf10ToPercentage = (outOf10: number) => {
   return (Math.round(outOf10*10)).toString() + '%'
 }
+
+export const formattedPrice = (price: number) => {
+  return price.toLocaleString()
+}
